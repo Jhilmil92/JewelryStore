@@ -1,9 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JeweleryStore.Common.Enums
+﻿namespace JeweleryStore.Common.Enums
 {
+    /// <summary>
+    /// User types of the system
+    /// </summary>
     public enum UserType
     {
         Privileged = 1,

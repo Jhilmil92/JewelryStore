@@ -1,12 +1,12 @@
 ﻿using Microsoft.Extensions.Diagnostics.HealthChecks;
-using System;
-using System.Collections.Generic;
-using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
 
 namespace JewelryStore.Common.Utilities
 {
+    /// <summary>
+    /// Health checker for the API
+    /// </summary>
     public class HealthCheck : IHealthCheck
     {
         public Task<HealthCheckResult> CheckHealthAsync(

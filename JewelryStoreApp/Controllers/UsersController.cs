@@ -1,12 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
 using System.Threading.Tasks;
 using JewelryStore.BLL.Interfaces;
 using JewelryStore.Domain.Models;
 using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Serilog;
 
 namespace JewelryStoreApp.Controllers
 {
@@ -15,23 +13,43 @@ namespace JewelryStoreApp.Controllers
     public class UsersController : ControllerBase
     {
         private readonly IUserBLL _userBLL;
+        
+        /// <summary>
+        /// Creates an instance of <see cref="UsersController"/> 
+        /// </summary>
+        /// <param name="userBLL"></param>
         public UsersController(IUserBLL userBLL)
         {
             _userBLL = userBLL;
         }
 
-        [AllowAnonymous]
-        [Route("users/getString")]
-        [HttpGet]
-        public string Login()
-        {
-            return "Hi";
-        }
-
+        /// <summary>
+        /// Authenticates a user.
+        /// </summary>
+        /// <param name="userModel"></param>
+        /// <returns></returns>
+        [Route("login")]
         [HttpPost]
-        public async Task<bool> Login(UserModel userModel)
+        [AllowAnonymous]
+        public async Task<IActionResult> Login([FromBody]UserModel userModel)
         {
-            return await _userBLL.AuthenticateUser(userModel);
+            try
+            {
+                var response = await _userBLL.AuthenticateUser(userModel);
+                if (response != null)
+                {
+                    return Ok(new { token = response.JwtToken });
+                }
+                else
+                {
+                    return Unauthorized();
+                }
+            }
+            catch(Exception ex)
+            {
+                Log.Fatal(ex, ex.Message);
+                throw;
+            }
         }
     }
 }

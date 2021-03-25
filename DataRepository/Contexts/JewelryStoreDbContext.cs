@@ -1,19 +1,27 @@
 ﻿using JeweleryStore.Common.Enums;
 using JewelryStore.Domain.Entities;
 using Microsoft.EntityFrameworkCore;
-using System;
 
 namespace JewelryStore.DataRepository.Contexts
 {
+    /// <summary>
+    /// Db Context for Jwellery store DataBase
+    /// </summary>
     public class JewelryStoreDbContext : DbContext
     {
+        /// <summary>
+        /// Creates an instance.
+        /// </summary>
+        /// <param name="options"></param>
         public JewelryStoreDbContext(DbContextOptions<JewelryStoreDbContext> options) 
             : base(options)
         {
-
-
         }
 
+        /// <summary>
+        /// Seeds the initial data
+        /// </summary>
+        /// <param name="modelBuilder"></param>
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
@@ -29,7 +37,7 @@ namespace JewelryStore.DataRepository.Contexts
                         Id = 1,
                         Name = "Diamond Dust",
                         UserName = "Diamonds",
-                        Password = "",
+                        Password = "diamonds",
                         UserCategory = UserType.Regular
                     },
                     new User
@@ -37,7 +45,7 @@ namespace JewelryStore.DataRepository.Contexts
                         Id = 2,
                         Name = "Wolverine Adamantium",
                         UserName = "Wolverine",
-                        Password = "",
+                        Password = "wolf",
                         UserCategory = UserType.Privileged
                     }
                 );
@@ -63,7 +71,7 @@ namespace JewelryStore.DataRepository.Contexts
                         Id = 1,
                         ItemId = 1,
                         UserId = 2,
-                        Discount = 2
+                        Discount = 10
                     }
                 );
         }

@@ -1,7 +1,6 @@
-﻿using JewelryStore.Domain.Models;
-using System;
+﻿using JeweleryStore.Common.Enums;
+using JewelryStore.Domain.Models;
 using System.Collections.Generic;
-using System.Text;
 using System.Threading.Tasks;
 
 namespace JewelryStore.BLL.Interfaces
@@ -12,7 +11,7 @@ namespace JewelryStore.BLL.Interfaces
 
         Task<IEnumerable<ItemModel>> GetItems();
 
-        Task<double> ComputeTotalPriceAsync(double metalPrice, double weight);
+        Task<double> ComputeTotalPriceAsync(double metalPrice, double weight,int itemId, UserType userType,string userName);
 
         Task<bool> CreateItem(ItemModel item);
 

@@ -4,10 +4,7 @@ using JewelryStore.DataRepository.Interfaces;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
-using System;
-using System.Collections.Generic;
 using System.Reflection;
-using System.Text;
 
 namespace JewelryStore.DataRepository
 {

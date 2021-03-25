@@ -1,8 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Text;
-
-namespace JewelryStore.Domain.Models
+﻿namespace JewelryStore.Domain.Models
 {
     public class ItemModel
     {
